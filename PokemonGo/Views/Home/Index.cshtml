@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script src="~/Scripts/angular.js"></script>
+
+<script src="~/Scripts/Home/NewOrder.js"></script>
+<style>
+    .center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:500px;
+}
+    .error {
+        font-weight:bold;
+        color:red;
+    }
+    input{
+
+        max-width:380px;
+    }
+</style>
+<div ng-app="orderPokemonApp">
+    <div ng-controller="orderPokemonCtrl" style="margin-top:20px;" class="center-block">
+        <div class="label label-primary" style="font-size:14px;">Здесь вы можете заказать покемона</div>
+        <form novalidate name="orderPokemonForm" ng-submit="sendOrder(orderPokemonForm.$valid)" style="margin-top:10px;">
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" name="name" class="form-control" ng-model="orderPokemon.name" required />
+                <div class="error" ng-show="showError">
+                    {{getError(orderPokemonForm.name.$error)}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" class="form-control" ng-model="orderPokemon.email" required  />
+                <div class="error" ng-show="showError">
+                    {{getError(orderPokemonForm.email.$error)}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Телефон</label>
+                <input type="tel" name="phone" class="form-control" ng-model="orderPokemon.phone" pattern="\+380[0-9]{9}" placeholder="+380991234567" required />
+                <div class="error" ng-show="showError">
+                    {{getError(orderPokemonForm.phone.$error)}}
+                </div>
+             </div>
+            <button type="submit" class="btn btn-success" >Заказать покемона!</button>
+        </form>
+    </div>
+</div>

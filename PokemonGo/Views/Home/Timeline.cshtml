@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Лента";
+}
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/Home/Timeline.js"></script>
+<style>
+    .timelineDiv {
+    background-color: #d9edf7;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    }
+</style>
+<div ng-app="TimelineApp">
+    <div ng-controller="TimlineCtrl">
+        <div ng-repeat="order in orders" class="timelineDiv">
+            <span>{{order.date | date :'HH:mm dd.MM.yyyy' }} </span>
+            <span>{{order.name}} заказал покемона уже </span>
+            <span>{{order.count}} раз</span>
+            @*<span ng-if="order.count>1 && order.count<5">раза</span>
+            <span ng-if="order.count<2 && order.count>4">раз</span>*@
+        </div>
+    </div>
+
+</div>
